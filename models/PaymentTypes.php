@@ -10,7 +10,7 @@ use Yii;
  * @property int $payment_type_id
  * @property string $name
  *
- * @property TblPayments[] $tblPayments
+ * @property Payments[] $tblPayments
  */
 class PaymentTypes extends \yii\db\ActiveRecord
 {
@@ -51,6 +51,6 @@ class PaymentTypes extends \yii\db\ActiveRecord
      */
     public function getTblPayments()
     {
-        return $this->hasMany(TblPayments::className(), ['payment_type_id' => 'payment_type_id']);
+        return $this->hasMany(Payments::className(), ['payment_type_id' => 'payment_type_id']);
     }
 }

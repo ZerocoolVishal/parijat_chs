@@ -43,6 +43,7 @@ AppAsset::register($this);
             ['label' => 'Flats', 'url' => ['flats/index']],
             ['label' => 'Members', 'url' => ['members/index']],
             ['label' => 'Payments', 'url' => ['payments/index']],
+            ['label' => 'Payments Type', 'url' => ['payment-types/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
