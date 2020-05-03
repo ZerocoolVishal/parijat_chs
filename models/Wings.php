@@ -10,7 +10,7 @@ use Yii;
  * @property int $wing_id
  * @property string $name
  *
- * @property TblFlats[] $tblFlats
+ * @property Flats[] $tblFlats
  */
 class Wings extends \yii\db\ActiveRecord
 {
@@ -51,6 +51,6 @@ class Wings extends \yii\db\ActiveRecord
      */
     public function getTblFlats()
     {
-        return $this->hasMany(TblFlats::className(), ['wing_id' => 'wing_id']);
+        return $this->hasMany(Flats::className(), ['wing_id' => 'wing_id']);
     }
 }
