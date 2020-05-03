@@ -14,8 +14,8 @@ use Yii;
  * @property int $flat_id
  * @property string $type
  *
- * @property TblFlats $flat
- * @property TblPayments[] $tblPayments
+ * @property Flats $flat
+ * @property Payments[] $tblPayments
  */
 class Members extends \yii\db\ActiveRecord
 {
@@ -38,7 +38,7 @@ class Members extends \yii\db\ActiveRecord
             [['type'], 'string'],
             [['name', 'email'], 'string', 'max' => 255],
             [['contact_no'], 'string', 'max' => 10],
-            [['flat_id'], 'exist', 'skipOnError' => true, 'targetClass' => TblFlats::className(), 'targetAttribute' => ['flat_id' => 'flat_id']],
+            [['flat_id'], 'exist', 'skipOnError' => true, 'targetClass' => Flats::className(), 'targetAttribute' => ['flat_id' => 'flat_id']],
         ];
     }
 
@@ -64,7 +64,7 @@ class Members extends \yii\db\ActiveRecord
      */
     public function getFlat()
     {
-        return $this->hasOne(TblFlats::className(), ['flat_id' => 'flat_id']);
+        return $this->hasOne(Flats::className(), ['flat_id' => 'flat_id']);
     }
 
     /**
@@ -74,6 +74,6 @@ class Members extends \yii\db\ActiveRecord
      */
     public function getTblPayments()
     {
-        return $this->hasMany(TblPayments::className(), ['member_id' => 'member_id']);
+        return $this->hasMany(Payments::className(), ['member_id' => 'member_id']);
     }
 }
