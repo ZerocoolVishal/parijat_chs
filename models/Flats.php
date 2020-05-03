@@ -11,8 +11,8 @@ use Yii;
  * @property int $wing_id
  * @property string $flat_no
  *
- * @property TblWings $wing
- * @property TblMembers[] $tblMembers
+ * @property Wings $wing
+ * @property Members[] $tblMembers
  */
 class Flats extends \yii\db\ActiveRecord
 {
@@ -33,7 +33,7 @@ class Flats extends \yii\db\ActiveRecord
             [['wing_id', 'flat_no'], 'required'],
             [['wing_id'], 'integer'],
             [['flat_no'], 'string', 'max' => 255],
-            [['wing_id'], 'exist', 'skipOnError' => true, 'targetClass' => TblWings::className(), 'targetAttribute' => ['wing_id' => 'wing_id']],
+            [['wing_id'], 'exist', 'skipOnError' => true, 'targetClass' => Wings::className(), 'targetAttribute' => ['wing_id' => 'wing_id']],
         ];
     }
 
@@ -56,7 +56,7 @@ class Flats extends \yii\db\ActiveRecord
      */
     public function getWing()
     {
-        return $this->hasOne(TblWings::className(), ['wing_id' => 'wing_id']);
+        return $this->hasOne(Wings::className(), ['wing_id' => 'wing_id']);
     }
 
     /**
@@ -66,6 +66,6 @@ class Flats extends \yii\db\ActiveRecord
      */
     public function getTblMembers()
     {
-        return $this->hasMany(TblMembers::className(), ['flat_id' => 'flat_id']);
+        return $this->hasMany(Members::className(), ['flat_id' => 'flat_id']);
     }
 }
