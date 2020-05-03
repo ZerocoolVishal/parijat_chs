@@ -16,8 +16,8 @@ use Yii;
  * @property float $amount
  * @property string $time
  *
- * @property TblMembers $member
- * @property TblPaymentTypes $paymentType
+ * @property Members $member
+ * @property PaymentTypes $paymentType
  */
 class Payments extends \yii\db\ActiveRecord
 {
@@ -41,8 +41,8 @@ class Payments extends \yii\db\ActiveRecord
             [['amount'], 'number'],
             [['time'], 'safe'],
             [['tnx_no'], 'string', 'max' => 10],
-            [['member_id'], 'exist', 'skipOnError' => true, 'targetClass' => TblMembers::className(), 'targetAttribute' => ['member_id' => 'member_id']],
-            [['payment_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => TblPaymentTypes::className(), 'targetAttribute' => ['payment_type_id' => 'payment_type_id']],
+            [['member_id'], 'exist', 'skipOnError' => true, 'targetClass' => Members::className(), 'targetAttribute' => ['member_id' => 'member_id']],
+            [['payment_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => PaymentTypes::className(), 'targetAttribute' => ['payment_type_id' => 'payment_type_id']],
         ];
     }
 
@@ -70,7 +70,7 @@ class Payments extends \yii\db\ActiveRecord
      */
     public function getMember()
     {
-        return $this->hasOne(TblMembers::className(), ['member_id' => 'member_id']);
+        return $this->hasOne(Members::className(), ['member_id' => 'member_id']);
     }
 
     /**
@@ -80,6 +80,6 @@ class Payments extends \yii\db\ActiveRecord
      */
     public function getPaymentType()
     {
-        return $this->hasOne(TblPaymentTypes::className(), ['payment_type_id' => 'payment_type_id']);
+        return $this->hasOne(PaymentTypes::className(), ['payment_type_id' => 'payment_type_id']);
     }
 }
